@@ -35,6 +35,7 @@ $config = [
         'db' => $db,
     ],
     'params' => $params,
+    
 ];
 
 if (YII_ENV_DEV) {
@@ -42,6 +43,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = 'yii\debug\Module';
     $config['modules']['gii'] = 'yii\gii\Module';
+    
 }
 
 return $config;

@@ -8,7 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-
+use app\models\News;
+use yii\db\Query;
 class SiteController extends Controller
 {
     public function behaviors()
@@ -49,7 +50,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+       
+        $news = new Query;
+        $news = $news->select('*')->from('news')->limit(10);
+        $news = $news->all();
+        return $this->render('index',['news'=>$news]);
     }
 
     public function actionLogin()
