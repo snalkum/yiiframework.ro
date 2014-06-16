@@ -60,13 +60,13 @@ class NewsController extends Controller{
         $r = new Request;
         if($r->isPost){
             if($model->saveData($r->post())){
-                return $this->render('add', ['model' => $model, 'validated' => true]);
+                return $this->render('edit', ['model' => $model, 'validated' => true]);
             }
             else{
-                 return $this->render('add', ['model' => $model, 'validated' => false]);
+                 return $this->render('edit', ['model' => $model, 'validated' => false]);
             }
         }
-            return $this->render('add', ['model' => $model]);
+            return $this->render('edit', ['model' => $model]);
     }
   
 }

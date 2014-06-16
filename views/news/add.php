@@ -22,7 +22,7 @@
     ?>
     <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">
-            <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Add News', ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
 <?php  ActiveForm::end() ?>

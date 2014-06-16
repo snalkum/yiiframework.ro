@@ -4,8 +4,8 @@
 
 
  $form = ActiveForm::begin([
-    'id' => 'login-form',
-    'options' => ['class' => 'form-horizontal'],
+    'id' => 'form',
+    'options' => ['class' => 'form-vertical'],
 ]) ?>
     <?= $form->field($model, 'title'); ?>
     <?= $form->field($model, 'content'); ?>
