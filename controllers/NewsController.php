@@ -56,7 +56,17 @@ class NewsController extends Controller{
         return $this->render('delete');
     }
     public function actionEdit($id){
-        return $this->render('edit');
+        $model = News::findOne(['id'=> $id]);
+        $r = new Request;
+        if($r->isPost){
+            if($model->saveData($r->post())){
+                return $this->render('add', ['model' => $model, 'validated' => true]);
+            }
+            else{
+                 return $this->render('add', ['model' => $model, 'validated' => false]);
+            }
+        }
+            return $this->render('add', ['model' => $model]);
     }
   
 }
