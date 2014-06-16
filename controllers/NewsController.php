@@ -11,7 +11,28 @@ use app\models\News;
 use yii\db\Query;
 use yii\web\Request;
 class NewsController extends Controller{
-  
+     public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['add', 'index', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['add', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
   
     public $layout='main';
 
@@ -32,6 +53,10 @@ class NewsController extends Controller{
             return $this->render('add', ['model' => $model]);
     }
     public function actionDelete($id){
-        
+        return $this->render('delete');
     }
+    public function actionEdit($id){
+        return $this->render('edit');
+    }
+  
 }
