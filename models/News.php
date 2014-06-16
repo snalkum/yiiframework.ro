@@ -48,4 +48,19 @@ class News extends \yii\db\ActiveRecord
             'modifed_on' => 'Modifed On',
         ];
     }
+    public function saveData(array $data){
+        $this->title=$data['News']['title'];
+        $this->content=$data['News']['content'];
+        $this->writen_on=date("Y-m-d H:i:s");
+        $this->modifed_on=date("Y-m-d H:i:s");
+        try{
+            parent::save();
+        } catch(Exception $e){
+            return false;
+        }
+        $this->title='';
+        $this->content='';
+        
+        return true;
+    }
 }
