@@ -52,6 +52,7 @@ class NewsController extends Controller{
         }
             return $this->render('add', ['model' => $model]);
     }
+    
     public function actionDelete($id){
         return $this->render('delete');
     }
