@@ -7,8 +7,9 @@
     'id' => 'form',
     'options' => ['class' => 'form-vertical'],
 ]) ?>
+<div class="col-lg-4 col-lg-offset-4">
     <?= $form->field($model, 'title'); ?>
-    <?= $form->field($model, 'content'); ?>
+    <?= $form->field($model, 'content')->textArea(['rows' => 6]); ?>
     <?php 
         if(isset($validated)){
             if($validated){
@@ -21,8 +22,9 @@
         
     ?>
     <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
+        <div class=" col-lg-11">
             <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
+</div>
 <?php  ActiveForm::end() ?>

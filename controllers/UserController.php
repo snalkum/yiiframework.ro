@@ -9,10 +9,11 @@ class UserController extends Controller {
    }
    public function actionRegister(){
         $r = new Request;
+         $model = new User;
         if($r->isPost){
-            echo 'test';
+            $model->saveUser();
         }
-       $model = new User;
+      
        return $this->render('register', ['model'=> $model]);
    }   
    
