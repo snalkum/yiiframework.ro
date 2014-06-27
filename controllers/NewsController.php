@@ -16,7 +16,7 @@ class NewsController extends Controller{
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['add', 'index', 'delete'],
+                'only' => ['add', 'index', 'delete', 'edit'],
                 'rules' => [
                     [
                         'actions' => ['add', 'delete'],
