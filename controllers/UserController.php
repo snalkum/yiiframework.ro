@@ -4,17 +4,23 @@ use yii\web\Controller;
 use app\models\User;
 use yii\web\Request;
 class UserController extends Controller {
+    public $model;
+    function __construct($id, $module, $config = array()) {
+        parent::__construct($id, $module, $config);
+        $this->model = new User();
+    }
    public function actionIndex(){
        return $this->render('index');
    }
    public function actionRegister(){
         $r = new Request;
-         $model = new User;
+        
         if($r->isPost){
-            $model->saveUser();
+            $this->model->save();
+            $this->model->error = 'test';
         }
-      
-       return $this->render('register', ['model'=> $model]);
+        
+       return $this->render('register', ['model'=> $this->model, 'error' => $this->model->error ]);
    }   
    
 }
