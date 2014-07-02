@@ -3,7 +3,11 @@
 namespace app\models;
 
 use Yii;
+
 use yii\validators\EmailValidator;
+
+
+
 /**
  * This is the model class for table "users".
  *
@@ -30,6 +34,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface{
     public $accessToken;
     public $error = array();
     public $group_id;
+    public $error;
+
     
     private static $users = [
         '100' => [
@@ -103,6 +109,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface{
     function rules()
     {
         return [
+
           
         ];
     }
@@ -142,7 +149,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface{
          }
          
             
+
     }
+    
+    
     public function attributeLabels()
     {
         return [

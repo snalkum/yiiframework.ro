@@ -9,23 +9,38 @@ class UserController extends Controller {
         parent::__construct($id, $module, $config);
         $this->model = new User();
     }
-    public function actionIndex(){
+
+   public function actionIndex(){
+
        return $this->render('index');
     }
     public function actionRegister(){
         $r = new Request;
+
+        
+
         if($r->isPost){
+
            $ui= $r->post();
            $ui = $ui['User'];
            if($this->model->register($ui)){
               $this->redirect($r->getBaseUrl() .'index.php?r='. 'user/welcome');
            }
         
+
+            $this->model->save();
+            $this->model->error = 'test';
+
         }
+
        
        return $this->render('register', ['model'=> $this->model, 'error' => $this->model->error ]);
     }   
     public function actionWelcome(){
         return $this->render('welcome');
     }
-}
+
+        
+   }   
+
+

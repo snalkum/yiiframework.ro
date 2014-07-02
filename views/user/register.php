@@ -21,12 +21,13 @@
     </div>
 <?php  ActiveForm::end() ?>
     <?php
+
         if(isset($error) && !empty($error)){
            if(is_array($error)){
               for($i=0; $i<count($error); $i++){
                   echo $error[$i];
               }
             }
-        }
+
     ?>
 </div>
