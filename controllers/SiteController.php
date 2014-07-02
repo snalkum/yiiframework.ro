@@ -12,6 +12,7 @@ use app\models\News;
 use yii\db\Query;
 class SiteController extends Controller
 {
+   
     public function behaviors()
     {
         return [
