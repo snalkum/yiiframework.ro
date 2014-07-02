@@ -4,17 +4,43 @@ use yii\web\Controller;
 use app\models\User;
 use yii\web\Request;
 class UserController extends Controller {
+    public $model;
+    function __construct($id, $module, $config = array()) {
+        parent::__construct($id, $module, $config);
+        $this->model = new User();
+    }
+
    public function actionIndex(){
+
        return $this->render('index');
-   }
-   public function actionRegister(){
+    }
+    public function actionRegister(){
         $r = new Request;
-         $model = new User;
+
+        
+
         if($r->isPost){
-            $model->saveUser();
+
+           $ui= $r->post();
+           $ui = $ui['User'];
+           if($this->model->register($ui)){
+              $this->redirect($r->getBaseUrl() .'index.php?r='. 'user/welcome');
+           }
+        
+
+            $this->model->save();
+            $this->model->error = 'test';
+
         }
-      
-       return $this->render('register', ['model'=> $model]);
+
+       
+       return $this->render('register', ['model'=> $this->model, 'error' => $this->model->error ]);
+    }   
+    public function actionWelcome(){
+        return $this->render('welcome');
+    }
+
+        
    }   
-   
-}
+
+

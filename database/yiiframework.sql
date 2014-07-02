@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2014 at 03:14 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.6-1ubuntu1.4
+-- Generation Time: Jul 02, 2014 at 05:44 PM
+-- Server version: 5.5.37
+-- PHP Version: 5.4.6-1ubuntu1.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,6 +37,17 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `group`
+--
+
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `news`
 --
 
@@ -63,7 +74,7 @@ INSERT INTO `news` (`id`, `title`, `content`, `writen_on`, `modifed_on`) VALUES
 (7, 'test', 'test', '2014-06-16 11:10:52', '2014-06-16 11:10:52'),
 (8, 'test', 'test', '2014-06-16 11:11:41', '2014-06-16 11:11:41'),
 (9, 'test', 'test', '2014-06-16 11:11:55', '2014-06-16 11:11:55'),
-(10, 'test', 'test', '2014-06-16 13:50:02', '2014-06-16 13:50:02');
+(10, 'Doar un test', 'fasf', '2014-06-30 15:13:17', '2014-06-30 15:13:17');
 
 -- --------------------------------------------------------
 
@@ -73,6 +84,7 @@ INSERT INTO `news` (`id`, `title`, `content`, `writen_on`, `modifed_on`) VALUES
 
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` varchar(40) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -81,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_status` tinyint(4) NOT NULL DEFAULT '1',
   `activation_key` varchar(40) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
